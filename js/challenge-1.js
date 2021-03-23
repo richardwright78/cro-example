@@ -19,16 +19,30 @@ function addDynamicBasket() {
     const dynamicBasket = document.createElement('div');
     dynamicBasket.id = 'dynamic-basket';
 
+    const quantitySelect = document.createElement('select');
+    quantitySelect.id = 'dynamic-basket-select';
+    quantitySelect.selectedIndex = 0;
+    const option1 = document.createElement('option');
+    option1.setAttribute('value', '1');
+    const option1Text = document.createTextNode('1');
+    option1.appendChild(option1Text);
+    const option2 = document.createElement('option');
+    option2.setAttribute('value', '2');
+    const option2Text = document.createTextNode('2');
+    option2.appendChild(option2Text);
+    quantitySelect.appendChild(option1);
+    quantitySelect.appendChild(option2);
+
+    dynamicBasket.appendChild(quantitySelect);
+
     const buttonWrapper = document.createElement('div');
-    buttonWrapper.id = 'dynamic-basket-button-wrapper';
     buttonWrapper.classList.add('a-button-stack');
 
     const buttonOuterSpan = document.createElement('span');
     buttonOuterSpan.classList.add('a-declarative');
 
     const buttonMiddleSpan = document.createElement('span');
-    buttonMiddleSpan.id = "dynamic-basket-button-middle-span";
-    buttonMiddleSpan.classList.add('a-button', 'a-spacing-small', 'a-button-primary', 'a-button-icon');
+    buttonMiddleSpan.classList.add('a-button', 'a-button-primary', 'a-button-icon');
 
     const buttonInnerSpan = document.createElement('span');
     buttonInnerSpan.classList.add('a-button-inner');
@@ -59,9 +73,11 @@ function addDynamicBasket() {
     wrapper.appendChild(dynamicBasket);
 
     const bodyQuery = document.getElementsByTagName('body');
-    bodyQuery[0].appendChild(wrapper)
+    bodyQuery[0].appendChild(wrapper);
 
     document.addEventListener('scroll', toggleDynamicBasket);
+
+    quantitySelect.addEventListener('change', updateQuantities);
 }
 
 function checkForBodyTag(mutations, observer) {
@@ -71,6 +87,16 @@ function checkForBodyTag(mutations, observer) {
         addDynamicBasket();
         return observer.disconnect();
     }
+}
+
+function updateQuantities({ target: { value } }) { 
+    const mainQuantityDropdown = document.getElementById('mobileQuantityDropDown');
+    mainQuantityDropdown.selectedIndex = Number(value) -1;
+    const quantityInput = document.getElementById('quantity');
+    quantityInput.setAttribute('value', value);
+
+    const mainQuantityPrompt = document.querySelector('.a-dropdown-prompt');
+    mainQuantityPrompt.innerText = value;
 }
 
 const observer = new MutationObserver(checkForBodyTag);
