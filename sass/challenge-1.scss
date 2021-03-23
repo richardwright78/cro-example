@@ -1,0 +1,39 @@
+#dynamic-basket-wrapper {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column-reverse;
+    z-index: 1000;
+    display: none;
+}
+
+#dynamic-basket {
+    width: 100%;
+    height: 7rem;
+    background: #131921;
+}
+
+#dynamic-basket-button-wrapper {
+    padding: 1rem;
+}
+
+#dynamic-basket-button-middle-span {
+    margin: 0 !important;
+}
+
+.slide-out {
+    transform: translateY(7rem);
+    transition: transform .5s ease-out;
+}
+
+.slide-in {
+    transform: translateY(0);
+    transition: transform .5s ease-out;
+}
+
+@media screen and (max-width: 900px) {
+    #dynamic-basket-wrapper {
+        display: flex;
+    }
+}
