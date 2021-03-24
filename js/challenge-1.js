@@ -55,6 +55,7 @@ function addDynamicBasket() {
     buttonInput.setAttribute('value', 'Add to Basket');
     buttonInput.setAttribute('title', 'Add to Shopping Basket');
     buttonInput.setAttribute('aria-labelledby', 'submit.add-to-cart-announce');
+    buttonInput.addEventListener('click', submitAddToCart)
 
     const buttonSRtext = document.createElement('span');
     buttonSRtext.classList.add('a-button-text');
@@ -97,6 +98,11 @@ function updateQuantities({ target: { value } }) {
 
     const mainQuantityPrompt = document.querySelector('.a-dropdown-prompt');
     mainQuantityPrompt.innerText = value;
+}
+
+function submitAddToCart() {
+    const addToCartForm = document.getElementById('addToCart');
+    addToCartForm.submit();
 }
 
 const observer = new MutationObserver(checkForBodyTag);
