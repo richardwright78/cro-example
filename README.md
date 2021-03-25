@@ -16,6 +16,8 @@ The page is modified to include a pop up 'Add to basket' button and quantity sel
 - http://localhost:7000/js/challenge-1.js
 - http://localhost:7000/css/challenge-1.css
 
-4. Run `npm start` in the terminal to start the local server and go to https://www.amazon.co.uk/Echo-Dot-3rd-Gen-Charcoal/dp/B07PJV3JPR/ref=sr_1_2?th=1
+4. Run `npm install` in the terminal to install the dependencies.
 
-5. Select a mobile view in the developer tools to view the example.
+5. Run `npm start` in the terminal to start the local server and go to https://www.amazon.co.uk/Echo-Dot-3rd-Gen-Charcoal/dp/B07PJV3JPR/ref=sr_1_2?th=1
+
+6. Select a mobile view in the developer tools to view the example.
