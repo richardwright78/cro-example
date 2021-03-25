@@ -106,4 +106,4 @@ function submitAddToCart() {
 }
 
 const observer = new MutationObserver(checkForBodyTag);
-observer.observe(document, { attributes: true, childList: true, subtree: true });
+observer.observe(document, { childList: true, subtree: true });
